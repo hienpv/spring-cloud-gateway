@@ -1,0 +1,21 @@
+server:
+  port: 8086
+
+spring:
+  application:
+    name: @project.artifactId@
+    version: @project.version@
+  profiles.active: ${MSB_ENV:dev}
+  cloud:
+    gateway:
+      httpclient:
+        connect-timeout: 30000
+        response-timeout: 30000
+      globalcors:
+        add-to-simple-url-handler-mapping: true
+        cors-configurations:
+          '[/**]':
+            allow-credentials: true
+            allowed-origin-patterns: '*'
+            allowed-headers: '*'
+            allowed-methods: '*'

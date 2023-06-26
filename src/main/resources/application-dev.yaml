@@ -1,0 +1,30 @@
+spring:
+  main:
+    allow-circular-references: true
+  security:
+    oauth2:
+      resourceserver:
+        opaquetoken:
+          introspection-uri: http://ibs-dev.msb.com.vn/keycloak/realms/IB/protocol/openid-connect/token/introspect
+          client-id: IB
+          client-secret: kj7kRxlDtx44KHNwPW0Xh7qtSjSvs1mk
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
+ibs:
+  backend:
+    baseUrl: http://localhost:8089/
+feign:
+  customer:
+    name: customer-service
+    baseUrl: http://localhost:8082/corp-customer/api/v1/
+    tokenConverter: token-converter
+management:
+  health:
+    redis:
+      enabled: true
+logging:
+  level:
+    root: DEBUG
